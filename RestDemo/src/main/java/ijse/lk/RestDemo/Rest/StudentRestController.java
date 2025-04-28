@@ -44,7 +44,7 @@ public class StudentRestController {
     }
 
     // in here it handle only integer bad values
-    @ExceptionHandler
+ /*   @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exception){
         StudentErrorResponse errorResponse = new StudentErrorResponse();
         errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
@@ -61,7 +61,9 @@ public class StudentRestController {
         errorResponse.setMessage(exception.getMessage());
         errorResponse.setTimestamps(System.currentTimeMillis());
         return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
-    }
+    }*/
+
+
 
 
 }
