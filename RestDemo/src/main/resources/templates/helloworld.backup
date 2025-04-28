@@ -7,18 +7,8 @@
 
 <body>
 
-Hello World of Spring!
-
-<br><br>
-
-Student name: <span th:text="${param.studentName}" />
+<p th:text="'Time on the server is ' + ${theDate}" />
 
 </body>
 
 </html>
-
-
-
-
-
-
