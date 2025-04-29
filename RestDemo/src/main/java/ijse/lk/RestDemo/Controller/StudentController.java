@@ -14,6 +14,8 @@ import java.util.List;
 public class StudentController {
     @Value("${countries}")
     private List<String> countries;
+    @Value("${systems}")
+    private List<String> systems;
     //method to show our form
     @GetMapping("/showStudentForm")
     public String showForm(Model theModel) {
@@ -24,6 +26,8 @@ public class StudentController {
         // add student object to the model
         theModel.addAttribute("student", theStudent);
         theModel.addAttribute("countries",countries);
+        // add the list of systems to the model
+        theModel.addAttribute("systems", systems);
 
         return "student-form";
     }
