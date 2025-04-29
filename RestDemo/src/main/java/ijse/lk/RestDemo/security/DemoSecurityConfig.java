@@ -46,9 +46,9 @@ public class DemoSecurityConfig {
                         form
                                 .loginPage("/showMyLoginPage")
                                 .loginProcessingUrl("/authenticateTheUser")
-                                //The POST URL Spring Security listens to for authenticating the user
-                                ///authenticateTheUser is handled automatically by Spring Security
                                 .permitAll()
+                )
+                .logout(logout -> logout.permitAll()
                 );
 
         return http.build();
