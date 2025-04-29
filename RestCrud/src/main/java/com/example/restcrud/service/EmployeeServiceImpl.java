@@ -1,9 +1,8 @@
 package com.example.restcrud.service;
 
-import com.example.restcrud.Dao.EmployeeDao;
-import com.example.restcrud.DaoWithJPA.EmployeeRepository;
+
+import com.example.restcrud.Dao.EmployeeRepository;
 import com.example.restcrud.entity.Employee;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
