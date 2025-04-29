@@ -3,6 +3,7 @@ package ijse.lk.RestDemo.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HelloWorldController {
 
     //show initial html form
-    @RequestMapping("/showform")
+    @GetMapping("/showform")
     public String showForm(){
         //Resolves to src/main/resources/templates/helloworld-form.html (Thymeleaf template)
         //Shows an initial HTML form to the user
