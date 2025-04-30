@@ -2,6 +2,7 @@ package lk.ijse.cruddemo.dao;
 
 import jakarta.persistence.EntityManager;
 import lk.ijse.cruddemo.Entity.Instructor;
+import lk.ijse.cruddemo.Entity.InstructorDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,10 @@ public class AppDAOImpl implements AppDAO {
         //delete the instructor
         entityManager.remove(tempInstructor);
 
+    }
+    @Override
+    public InstructorDetail findInstructorDetailById(int theId) {
+        return entityManager.find(InstructorDetail.class, theId);
     }
 }
 
