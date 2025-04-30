@@ -29,7 +29,8 @@ public class InstructorDetail {
     @Column(name="hobby")
     private String hobby;
     // add @OneToOne annotation
-    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    // In here we dont use cascade.REMOVE because then also instructor will delete after the detail deletion
     private Instructor instructor;
 
     public Instructor getInstructor() {
