@@ -2,6 +2,8 @@ package lk.ijse.cruddemo.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="course")
 public class Course {
@@ -28,6 +30,10 @@ public class Course {
                           CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
 
     public Course() {
 
