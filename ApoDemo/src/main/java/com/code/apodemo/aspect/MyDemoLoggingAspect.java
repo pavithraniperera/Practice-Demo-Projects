@@ -3,10 +3,12 @@ package com.code.apodemo.aspect;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class MyDemoLoggingAspect {
     // This pointcut matches the execution of any method (*)
 // in any class (*) inside the package 'com.code.apodemo.Dao',
