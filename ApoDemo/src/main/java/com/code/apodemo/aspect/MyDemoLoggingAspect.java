@@ -172,7 +172,7 @@ public class MyDemoLoggingAspect {
             // log the exception
             System.out.println(exc.getMessage());
 
-            // give user a custom message
+            // give user a custom message , exception is never thrown in a main app
             result = "Major accident! But no worries, your private AOP helicopter is on the way!";
         }
 
