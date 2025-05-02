@@ -1,6 +1,7 @@
 package com.code.apodemo;
 
 import com.code.apodemo.Dao.AccountDao;
+import com.code.apodemo.Dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,17 +16,18 @@ public class ApoDemoApplication {
 
 	@Bean
 	
-	public CommandLineRunner commandLineRunner(AccountDao theAccountDAO) {
+	public CommandLineRunner commandLineRunner(AccountDao theAccountDAO, MembershipDAO theMembershipDao) {
 
 		return runner -> {
 
-			demoTheBeforeAdvice(theAccountDAO);
+			demoTheBeforeAdvice(theAccountDAO,theMembershipDao);
 		};
 	}
 
-	private void demoTheBeforeAdvice(AccountDao theAccountDAO) {
+	private void demoTheBeforeAdvice(AccountDao theAccountDAO, MembershipDAO theMembershipDao) {
 		//call the business method
 		theAccountDAO.addAccount();
+		theMembershipDao.addSillyMember();
 	}
 
 
