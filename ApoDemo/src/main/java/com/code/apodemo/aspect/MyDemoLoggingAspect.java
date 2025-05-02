@@ -16,6 +16,18 @@ public class MyDemoLoggingAspect {
     private void forDaoPackage(){
 
     }
+    // create a pointcut for getter methods
+    @Pointcut("execution(* com.code.apodemo.Dao.*.get*(..))")
+    private void getter() {}
+
+    // create a pointcut for setter methods
+    @Pointcut("execution(* com.code.apodemo.Dao.*.set*(..))")
+    private void setter() {}
+    // create pointcut: include package ... exclude getter/setter
+    @Pointcut("forDaoPackage() && !(getter() || setter())")
+    private void forDaoPackageNoGetterSetter() {
+
+    }
 
     // this is where we add all of our advices for logging
     //Match only addAccount method in AccountDao
@@ -24,12 +36,13 @@ public class MyDemoLoggingAspect {
     //@Before("execution(* add*())")  //match with any return type
    // @Before("execution(* add*(com.code.apodemo.Account))")  //match with specific parameter
     //@Before("execution(* add*(com.code.apodemo.Account,..))")  //match with specific parameter and any other para
-    @Before("forDaoPackage()")  //match package all classes and methods with any parameter
+    @Before("forDaoPackageNoGetterSetter()")  //match package all classes and methods with any parameter
     public void beforeAddAccountAdvice() {
 
         System.out.println("\n=====>>> Executing @Before advice on addAccount()");
 
     }
+
     @Before("forDaoPackage()")
     public void performApiAnalytics() {
         System.out.println("\n=====>>> Performing API analytics");

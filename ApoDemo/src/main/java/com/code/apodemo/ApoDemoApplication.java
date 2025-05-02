@@ -29,6 +29,11 @@ public class ApoDemoApplication {
 		Account myAccount = new Account();
 		theAccountDAO.addAccount(myAccount,true);
 		theMembershipDao.addSillyMember();
+		//call the accountDao getter /setter methods
+		theAccountDAO.setName("pavi");
+		theAccountDAO.setServiceCode("silver");
+		theAccountDAO.getName();
+		theAccountDAO.getServiceCode();
 	}
 
 
