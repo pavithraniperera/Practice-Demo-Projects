@@ -1,8 +1,11 @@
 package com.code.apodemo.aspect;
 
+import com.code.apodemo.Account;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -39,9 +42,28 @@ public class MyDemoLoggingAspect {
    // @Before("execution(* add*(com.code.apodemo.Account))")  //match with specific parameter
     //@Before("execution(* add*(com.code.apodemo.Account,..))")  //match with specific parameter and any other para
     @Before("forDaoPackageNoGetterSetter()")  //match package all classes and methods with any parameter
-    public void beforeAddAccountAdvice() {
+    public void beforeAddAccountAdvice(JoinPoint joinPoint) {
 
         System.out.println("\n=====>>> Executing @Before advice on addAccount()");
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("MethodSignature - "+methodSignature);
+        // display method arguments
+
+        // get args
+        Object[] args = joinPoint.getArgs();
+
+        for (Object tempArg : args){
+            System.out.println(tempArg);
+            if (tempArg instanceof Account) {
+
+                // downcast and print Account specific stuff
+                Account theAccount = (Account) tempArg;
+
+                System.out.println("account name: " + theAccount.getName());
+                System.out.println("account level: " + theAccount.getLevel());
+            }
+        }
+
 
     }
 
