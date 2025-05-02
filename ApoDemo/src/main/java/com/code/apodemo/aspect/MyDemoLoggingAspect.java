@@ -171,9 +171,11 @@ public class MyDemoLoggingAspect {
         catch (Exception exc) {
             // log the exception
             System.out.println(exc.getMessage());
+            // rethrow exception
+            throw exc;
 
             // give user a custom message , exception is never thrown in a main app
-            result = "Major accident! But no worries, your private AOP helicopter is on the way!";
+            //result = "Major accident! But no worries, your private AOP helicopter is on the way!";
         }
 
         // get end timestamp
