@@ -2,6 +2,7 @@ package com.code.apodemo;
 
 import com.code.apodemo.Dao.AccountDao;
 import com.code.apodemo.Dao.MembershipDAO;
+import com.code.apodemo.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,16 +19,29 @@ public class ApoDemoApplication {
 
 	@Bean
 	
-	public CommandLineRunner commandLineRunner(AccountDao theAccountDAO, MembershipDAO theMembershipDao) {
+	public CommandLineRunner commandLineRunner(TrafficFortuneService theTrafficFortuneService,AccountDao theAccountDAO, MembershipDAO theMembershipDao) {
 
 		return runner -> {
 
 		//	demoTheBeforeAdvice(theAccountDAO,theMembershipDao);
 			//demoTheAfterReturningAdvice(theAccountDAO,theMembershipDao);
 			//demoTheAfterThrowingAdvice(theAccountDAO);
-			demoTheAfterAdvice(theAccountDAO);
+			//demoTheAfterAdvice(theAccountDAO);
+			demoTheAroundAdvice(theTrafficFortuneService);
 		};
 
+	}
+	private void demoTheAroundAdvice(TrafficFortuneService theTrafficFortuneService) {
+
+		System.out.println("\nMain Program: demoTheAroundAdvice");
+
+		System.out.println("Calling getFortune()");
+
+		String data = theTrafficFortuneService.getFortune();
+
+		System.out.println("\nMy fortune is: " + data);
+
+		System.out.println("Finished");
 	}
 	private void demoTheAfterAdvice(AccountDao theAccountDAO) {
 
