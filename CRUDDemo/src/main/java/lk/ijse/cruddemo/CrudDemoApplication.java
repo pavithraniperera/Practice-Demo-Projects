@@ -3,6 +3,7 @@ package lk.ijse.cruddemo;
 import lk.ijse.cruddemo.Entity.Course;
 import lk.ijse.cruddemo.Entity.Instructor;
 import lk.ijse.cruddemo.Entity.InstructorDetail;
+import lk.ijse.cruddemo.Entity.Review;
 import lk.ijse.cruddemo.dao.AppDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,8 +32,29 @@ public class CrudDemoApplication {
 			//findInstructorWithCoursesJoinFetch(appDAO);
 			//updateInstructor(appDAO);
 			//updateCourse( appDAO);
-			deleteCourse(appDAO);
+			//deleteCourse(appDAO);
+			createCourseAndReviews(appDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO appDAO) {
+
+		// create a course
+		Course tempCourse = new Course("Pacman - How To Score One Million Points");
+
+		// add some reviews
+		tempCourse.addReview(new Review("Great course ... loved it!"));
+		tempCourse.addReview(new Review("Cool course, job well done."));
+		tempCourse.addReview(new Review("What a dumb course, you are an idiot!"));
+
+		// save the course ... and leverage the cascade all
+		System.out.println("Saving the course");
+		System.out.println(tempCourse);
+		System.out.println(tempCourse.getReviews());
+
+		appDAO.save(tempCourse);
+
+		System.out.println("Done!");
 	}
 	private void updateCourse(AppDAO appDAO) {
 
@@ -233,6 +255,8 @@ public class CrudDemoApplication {
 
 		System.out.println("Done!");
 	}
+
+
 
 
 

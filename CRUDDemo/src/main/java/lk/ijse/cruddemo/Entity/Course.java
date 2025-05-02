@@ -2,6 +2,7 @@ package lk.ijse.cruddemo.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,17 @@ public class Course {
                           CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    //This is unidirectional: only Course knows about Review.
+    //The Review does not have any reference back to the Course
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
     private List<Review> reviews;
@@ -65,6 +77,14 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+    public void addReview(Review theReview) {
+
+        if (reviews == null) {
+            reviews = new ArrayList<>();
+        }
+
+        reviews.add(theReview);
     }
 
     @Override
