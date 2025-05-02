@@ -119,6 +119,14 @@ public class MyDemoLoggingAspect {
         System.out.println("\n=====>>> The exception is: " + theExc);
     }
 
+    @After("execution(* com.code.apodemo.Dao.AccountDao.findAccounts(..))")
+    public void afterFinallyFindAccountsAdvice(JoinPoint theJoinPoint) {
+
+        // print out which method we are advising on
+        String method = theJoinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @After (finally) on method: " + method);
+    }
+
 
 
 }
