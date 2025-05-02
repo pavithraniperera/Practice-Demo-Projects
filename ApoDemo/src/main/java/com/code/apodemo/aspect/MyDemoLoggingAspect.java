@@ -14,7 +14,8 @@ public class MyDemoLoggingAspect {
    // @Before("execution(public void add*())") //match with any add method
     //@Before("execution(* add*())")  //match with any return type
    // @Before("execution(* add*(com.code.apodemo.Account))")  //match with specific parameter
-    @Before("execution(* add*(com.code.apodemo.Account,..))")  //match with specific parameter and any other para
+    //@Before("execution(* add*(com.code.apodemo.Account,..))")  //match with specific parameter and any other para
+    @Before("execution(* com.code.apodemo.Dao.*.*(..))")  //match package all classes and methods with any parameter
     public void beforeAddAccountAdvice() {
 
         System.out.println("\n=====>>> Executing @Before advice on addAccount()");
