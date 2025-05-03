@@ -22,6 +22,8 @@ public class EmployeeController {
 
     @GetMapping("/list")
     public String listEmployees(Model theModel) {
+        //theModel -
+        // A Spring-provided object used to pass data from the controller to the view (like Thymeleaf or JSP).
 
         // get the employees from db
         List<Employee> theEmployees = employeeService.findAll();
