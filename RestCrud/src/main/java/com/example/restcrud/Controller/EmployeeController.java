@@ -51,6 +51,17 @@ public class EmployeeController {
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/list";
     }
+    //@ModelAttribute binds form data (In this case, it takes the form data submitted from the UI,
+    // and populates an Employee object with it.)
+ /*   Form submits to /save.
+
+    Spring binds form data to Employee theEmployee.
+
+    Controller saves the employee.
+
+    Browser is redirected to /employees/list, triggering a new GET request.*/
+
+
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("employeeId") int theId,
                                     Model theModel) {
