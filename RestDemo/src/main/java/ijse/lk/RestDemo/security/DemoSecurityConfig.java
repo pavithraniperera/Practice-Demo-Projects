@@ -71,9 +71,11 @@ public class DemoSecurityConfig {
                         form
                                 .loginPage("/showMyLoginPage")
                                 .loginProcessingUrl("/authenticateTheUser")
+                                ///authenticateTheUser: URL Spring Security internally
+                                // handles for authentication (no controller needed).
                                 .permitAll()
                 )
-                .logout(logout -> logout.permitAll()
+                .logout(logout -> logout.permitAll() //Spring handles logout automatically at /logout
                 )
                 .exceptionHandling(configurer ->
                         configurer.accessDeniedPage("/access-denied")
